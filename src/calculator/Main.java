@@ -53,6 +53,7 @@ public class Main implements ActionListener {
 			functionsButton[i].setFocusable(false);
 			functionsButton[i].setBackground(Color.orange);
 			functionsButton[i].setForeground(Color.white);
+			functionsButton[i].setCursor(new Cursor(Cursor. HAND_CURSOR));
 		}
 		for(int i=0;i<10;i++) {
 			numbersButton[i]=new JButton(String.valueOf(i));
@@ -61,6 +62,7 @@ public class Main implements ActionListener {
 			numbersButton[i].setBackground(Color.gray);
 			numbersButton[i].setForeground(Color.white);
 			numbersButton[i].setFocusable(false);
+			numbersButton[i].setCursor(new Cursor(Cursor. HAND_CURSOR));
 		}
 		negButton.setBounds(50,430,100,50);
 		delButton.setBounds(150,430,100,50);
@@ -109,7 +111,71 @@ public class Main implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		for(int i=0;i<10;i++) {
+			if(e.getSource()==numbersButton[i]) {
+				textfield.setText(textfield.getText().concat(String.valueOf(i)));
+			}
+		}
+			if(e.getSource()==decButton) {
+				textfield.setText(textfield.getText().concat("."));
+			}
+			if(e.getSource()==addButton) {
+				num1=Double.parseDouble(textfield.getText());
+				operator='+';
+				textfield.setText("");
+			}
+			if(e.getSource()==mulButton) {
+				num1=Double.parseDouble(textfield.getText());
+				operator='*';
+				textfield.setText("");
+			}
+			if(e.getSource()==divButton) {
+				num1=Double.parseDouble(textfield.getText());
+				operator='/';
+				textfield.setText("");
+			}
+			if(e.getSource()==subButton) {
+				num1=Double.parseDouble(textfield.getText());
+				operator='-';
+				textfield.setText("");
+			}
+			if(e.getSource()==equButton) {
+				num2=Double.parseDouble(textfield.getText());
+				
+				switch(operator) {
+				case '+':
+					result=num1+num2;
+					break;
+				case '-':
+					result=num1-num2;
+					break;
+				case '*':
+					result=num1*num2;
+					break;
+				case '/':
+					result=num1/num2;
+					break;
+				
+				}
+				
+			textfield.setText(String.valueOf(result));
+			num1=result;
+			}
+			if(e.getSource()==clrButton) {
+				textfield.setText("");
+			}
+			if(e.getSource()==delButton) {
+				String string = textfield.getText();
+				textfield.setText("");
+				for(int i=0;i<string.length()-1;i++) {
+					textfield.setText(textfield.getText()+string.charAt(i));
+				}
+			}
+			if(e.getSource()==negButton) {
+				double temp = Double.parseDouble(textfield.getText());
+				temp*=-1;
+				textfield.setText(String.valueOf(temp));
+			}
 		
 	}
 
