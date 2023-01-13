@@ -11,9 +11,22 @@ public class Main implements ActionListener {
 	JButton addButton,subButton,mulButton,divButton;
 	JButton decButton,equButton,delButton,clrButton,negButton;
 	JPanel panel;
-	Font font =new Font()
-	
+	Font font =new Font("Ink Free",Font.BOLD,30);
+	double num1=0,num2=0,num3=0;
+	char operator;
 	Main(){
+		frame=new JFrame("CALCULATOR");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(420,550);
+		frame.setLayout(null);
+		
+		textfield=new JTextField();
+		textfield.setBounds(50,25,300,50);
+		textfield.setBackground(Color.white);
+		
+		
+		frame.add(textfield);
+		frame.setVisible(true);
 		
 	}
 	
