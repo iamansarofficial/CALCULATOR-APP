@@ -12,12 +12,13 @@ public class Main implements ActionListener {
 	JButton decButton,equButton,delButton,clrButton,negButton;
 	JPanel panel;
 	Font font =new Font("Ink Free",Font.BOLD,30);
-	double num1=0,num2=0,num3=0;
+	double num1=0,num2=0,result=0;
 	char operator;
 	Main(){
 		frame=new JFrame("CALCULATOR");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(420,550);
+		frame.getContentPane().setBackground( Color.black );
 		frame.setLayout(null);
 		
 		textfield=new JTextField();
@@ -50,11 +51,15 @@ public class Main implements ActionListener {
 			functionsButton[i].addActionListener(this);
 			functionsButton[i].setFont(font);
 			functionsButton[i].setFocusable(false);
+			functionsButton[i].setBackground(Color.orange);
+			functionsButton[i].setForeground(Color.white);
 		}
-		for(int i=0;i<9;i++) {
+		for(int i=0;i<10;i++) {
 			numbersButton[i]=new JButton(String.valueOf(i));
 			numbersButton[i].addActionListener(this);
 			numbersButton[i].setFont(font);
+			numbersButton[i].setBackground(Color.gray);
+			numbersButton[i].setForeground(Color.white);
 			numbersButton[i].setFocusable(false);
 		}
 		negButton.setBounds(50,430,100,50);
@@ -63,6 +68,34 @@ public class Main implements ActionListener {
 		
 		
 		
+		panel = new JPanel();
+		panel.setBounds(50, 100, 300, 300);
+		panel.setLayout(new GridLayout(4,4,10,10));
+		panel.setBackground(Color.black);
+		
+
+		panel.add(numbersButton[1]);
+		panel.add(numbersButton[2]);
+		panel.add(numbersButton[3]);
+		panel.add(addButton);
+		panel.add(numbersButton[4]);
+		panel.add(numbersButton[5]);
+		panel.add(numbersButton[6]);
+		panel.add(subButton);
+		panel.add(numbersButton[7]);
+		panel.add(numbersButton[8]);
+		panel.add(numbersButton[9]);
+		panel.add(mulButton);
+		panel.add(decButton);
+		panel.add(numbersButton[0]);
+		panel.add(equButton);
+		panel.add(divButton);
+
+		
+		frame.add(panel);
+		frame.add(delButton);
+		frame.add(clrButton);
+		frame.add(negButton);
 		frame.add(textfield);
 		frame.setVisible(true);
 		
@@ -70,7 +103,7 @@ public class Main implements ActionListener {
 	
 	
 	public static void main(String[] args) {
-		Main main=new Main();
+		Main m=new Main();
 	}
 
 
